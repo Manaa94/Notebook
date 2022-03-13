@@ -12,3 +12,9 @@ class NoteForm(forms.ModelForm):
     class Meta:
         model = Note
         fields = ('title', 'content')
+
+    def clean(self):
+        clean_data = super().clean()
+        if not clean_data['title']:
+            clean_data['title'] = clean_data['content'][:7] + '...'
+        return clean_data
