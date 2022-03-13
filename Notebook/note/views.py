@@ -1,4 +1,4 @@
-from django.views.generic import edit, list
+from django.views.generic import edit, list, UpdateView
 from django.urls import reverse
 from .models import Note
 from .forms import NoteForm
@@ -16,3 +16,9 @@ class NoteCreateView(edit.CreateView):
 
     def get_success_url(self):
         return reverse('note:note-list')
+
+class NoteUpdateView(UpdateView):
+    template_name = 'index.html'
+    form_class = NoteForm
+    queryset = Note.objects.all()
+
