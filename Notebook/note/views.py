@@ -1,4 +1,4 @@
-from django.views.generic import edit, list, UpdateView
+from django.views.generic import edit, list, UpdateView, base
 from django.urls import reverse
 from .models import Note
 from .forms import NoteForm
@@ -21,4 +21,9 @@ class NoteUpdateView(UpdateView):
     template_name = 'index.html'
     form_class = NoteForm
     queryset = Note.objects.all()
+
+class NoteDeleteView(edit.DeleteView):
+    template_name = 'index.html'
+    form_class = NoteForm
+
 
