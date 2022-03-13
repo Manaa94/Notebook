@@ -13,6 +13,7 @@ class NoteForm(forms.ModelForm):
         model = Note
         fields = ('title', 'content')
 
+    # If there is no title, it puts the first 7 characters of the text in the title.
     def clean(self):
         clean_data = super().clean()
         if not clean_data['title']:
